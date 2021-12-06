@@ -1,0 +1,90 @@
+admin:
+  server:
+    ip: localhost
+    port: 9000
+auth:
+  service:
+    id: auth-service
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://${eureka.server.ip}:${eureka.server.port}/eureka/
+  instance:
+    prefer-ip-address: true
+  server:
+    ip: localhost
+    port: 9500
+info:
+  tags:
+    environment: ${spring.application.name}
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enable: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+rabbitmq:
+  server:
+    ip: localhost
+    port: 5672
+server:
+  compression:
+    enabled: true
+    excluded-user-agents: ''
+    mime-types: text/html,text/plain,text/css,application/javascript,application/json
+    min-response-size: 2048
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          metadata:
+            tags:
+              environment: ${spring.application.name}
+            user:
+              name: '{cipher}9ab33ceff94b860671f66568409c1faa481af093c9eac72db1fed30942224144'
+              password: '{cipher}9ab33ceff94b860671f66568409c1faa481af093c9eac72db1fed30942224144'
+          service-url: http://${server.address}:${server.port}
+        password: '{cipher}9ab33ceff94b860671f66568409c1faa481af093c9eac72db1fed30942224144'
+        url: http://${admin.server.ip}:${admin.server.port}
+        username: '{cipher}9ab33ceff94b860671f66568409c1faa481af093c9eac72db1fed30942224144'
+  jmx:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.FirebirdDialect
+        format_sql: true
+    show-sql: true
+  rabbitmq:
+    host: ${rabbitmq.server.ip}
+    password: '{cipher}ddf204aedeed83fc41b8dc47375b7d59f07040684073e7a584a85441505d542f'
+    port: ${rabbitmq.server.port}
+    username: guest
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://${zipkin.server.ip}:${zipkin.server.port}
+    sender:
+      type: web
+token:
+  api:
+    key: Authorization
+  expiration: '300000 '
+  key: SOME_SECRET_KEY
+user:
+  service:
+    id: user-service
+zipkin:
+  server:
+    ip: localhost
+    port: 8800

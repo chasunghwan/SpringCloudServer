@@ -5,6 +5,10 @@ admin:
 auth:
   service:
     id: auth-service
+zipkin:
+  server:
+    ip: localhost
+    port: 9800  
 eureka:
   client:
     fetch-registry: true
@@ -84,7 +88,4 @@ token:
 user:
   service:
     id: user-service
-zipkin:
-  server:
-    ip: localhost
-    port: 8800
+
